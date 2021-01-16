@@ -4,20 +4,20 @@ import { MovieActionType, MovieStateType } from 'modules/Movies/types'
 export const movieReducer = (state: MovieStateType, action: MovieActionType) => {
   switch (action.type) {
     case 'SEARCH':
-      return { 
+      return {
         ...state,
-        searchText: action.payload
+        searchText: action.payload,
       }
     case 'SELECT_MOVIE':
       return {
         ...state,
         selectedMovie: action.payload,
-        showMovieDetail: true
+        showMovieDetail: true,
       }
     case 'HIDE_MOVIE_DETAIL':
       return {
         ...state,
-        showMovieDetail: false
+        showMovieDetail: false,
       }
     default: {
       return state
