@@ -1,6 +1,3 @@
-// Movie Detail
-export interface MovieDetail {}
-
 // Movie Type
 export interface MovieType {
   Title: string
@@ -45,6 +42,7 @@ export interface MovieStateType {
   searchText: string
   selectedMovie: string
   showMovieDetail: boolean
+  currentPage: number
 }
 
 // Movie Action
@@ -52,3 +50,4 @@ export type MovieActionType =
   | { type: 'SEARCH'; payload: string }
   | { type: 'SELECT_MOVIE'; payload: string }
   | { type: 'HIDE_MOVIE_DETAIL' }
+  | { type: 'SET_PAGE'; payload: number }

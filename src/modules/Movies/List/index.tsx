@@ -16,21 +16,20 @@ import MovieDetail from 'modules/Movies/Detail'
 // Component
 const MovieList = () => {
   // State
-  const { state } = useContext(MovieContext)
-  const [currentPage, setCurrentPage] = useState<number>(1)
+  const { state, dispatch } = useContext(MovieContext)
   const queryClient = useQueryClient()
   let total = 0
 
   // Change Page
   const changePage = (page: number) => {
     queryClient.clear()
-    setCurrentPage(page)
+    dispatch({ type: 'SET_PAGE', payload: page })
   }
 
   // API Call
   const { isLoading, error, data } = useQuery<MovieListResponseType>(
     'movieList',
-    () => listMoviesHandler(state.searchText, currentPage),
+    () => listMoviesHandler(state.searchText, state.currentPage),
     {
       retry: 1,
     },
@@ -61,7 +60,13 @@ const MovieList = () => {
       </Row>
       {/* Pagination */}
       <Row justify="center">
-        <Pagination defaultCurrent={1} current={currentPage} total={total} onChange={changePage} hideOnSinglePage />
+        <Pagination
+          defaultCurrent={1}
+          current={state.currentPage}
+          total={total}
+          onChange={changePage}
+          hideOnSinglePage
+        />
       </Row>
       <MovieDetail />
     </>

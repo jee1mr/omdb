@@ -18,6 +18,7 @@ const initialState: MovieStateType = {
   searchText: '',
   selectedMovie: '',
   showMovieDetail: false,
+  currentPage: 1,
 }
 
 // Context

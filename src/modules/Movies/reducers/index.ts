@@ -7,6 +7,7 @@ export const movieReducer = (state: MovieStateType, action: MovieActionType) => 
       return {
         ...state,
         searchText: action.payload,
+        currentPage: 1,
       }
     case 'SELECT_MOVIE':
       return {
@@ -18,6 +19,11 @@ export const movieReducer = (state: MovieStateType, action: MovieActionType) => 
       return {
         ...state,
         showMovieDetail: false,
+      }
+    case 'SET_PAGE':
+      return {
+        ...state,
+        currentPage: action.payload,
       }
     default: {
       return state
