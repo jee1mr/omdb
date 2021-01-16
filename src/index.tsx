@@ -1,20 +1,13 @@
 // Imports
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import axios from 'axios';
 import 'antd/dist/antd.css';
 
 // App Imports
-import { RouteWithSubRoutes, ROUTES } from './setup/routes';
+import App from './App';
 
-ReactDOM.render(
-  <BrowserRouter>
-    <Switch>
-      {ROUTES.map((route) => {
-        return <RouteWithSubRoutes {...route} />;
-      })}
-      <Route component={() => <h1>Not Found!</h1>} />
-    </Switch>
-  </BrowserRouter>,
-  document.getElementById('root')
-);
+// Setup API Base URL
+axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL;
+
+ReactDOM.render(<App />, document.getElementById('root'));

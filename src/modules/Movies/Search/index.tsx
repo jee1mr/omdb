@@ -1,9 +1,13 @@
 // Imports
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { useQueryClient } from 'react-query';
+
+// UI
+import { Input } from 'antd';
 
 // App Imports
-import { Input } from 'antd';
+import { MovieContext } from 'pages/Home';
 
 const { Search } = Input;
 
@@ -14,13 +18,22 @@ const SearchUI = styled(Search)`
 
 // Component
 const SearchBar = () => {
+  // State
+  const { dispatch } = useContext(MovieContext);
+  const queryClient = useQueryClient();
+
   // On Search
-  const onSearch = (value: string) => console.log(value);
+  const onSearch = (value: string) => {
+    queryClient.clear(); // clear cache
+    dispatch({
+      type: 'SEARCH',
+      payload: value,
+    });
+  };
 
   return (
     <SearchUI
       placeholder='Search for your favourite movies...'
-      allowClear
       enterButton='Search'
       size='large'
       onSearch={onSearch}
