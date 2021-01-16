@@ -60,7 +60,16 @@ const MovieDetail: React.FC = () => {
 
   // Error
   if (error || !data || data?.data?.Response === 'False')
-    return <Empty></Empty>;
+    return (
+      <MovieDetailUI
+        title='Error'
+        visible={state.showMovieDetail}
+        footer={null}
+        onCancel={closeModal}
+      >
+        <Empty></Empty>
+      </MovieDetailUI>
+    );
 
   return (
     <MovieDetailUI
