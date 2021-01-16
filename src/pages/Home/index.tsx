@@ -27,7 +27,7 @@ export const MovieContext = createContext<{
   dispatch: Dispatch<MovieActionType>
 }>({ state: initialState, dispatch: () => null })
 
-// UI
+// Styling
 const LayoutUI = styled(Layout)`
   min-height: 100vh;
 `

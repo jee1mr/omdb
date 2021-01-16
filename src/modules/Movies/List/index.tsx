@@ -1,5 +1,5 @@
 // Imports
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { useQuery, useQueryClient } from 'react-query'
 
 // UI
@@ -53,6 +53,7 @@ const MovieList = () => {
   // Result
   return (
     <>
+      {/* List */}
       <Row justify="center">
         {data.data?.Search?.map(({ Title: title, Poster: poster, imdbID }) => (
           <MovieItem key={imdbID} title={title} poster={poster} imdbID={imdbID} />
@@ -68,6 +69,7 @@ const MovieList = () => {
           hideOnSinglePage
         />
       </Row>
+      {/* Movie Detail Modal */}
       <MovieDetail />
     </>
   )

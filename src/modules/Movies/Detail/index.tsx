@@ -45,6 +45,7 @@ const MovieDetail: React.FC = () => {
     },
   )
 
+  // Loading
   if (isLoading) {
     return (
       <MovieDetailUI title="Loading..." visible={state.showMovieDetail} footer={null} onCancel={closeModal}>
